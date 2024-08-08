@@ -3,6 +3,8 @@ require("dotenv").config();
 
 const { configDB } = require("./config/db");
 
+const stocksRouter = require("./routes/stocks");
+
 const app = express();
 const port = process.env.PORT;
 
@@ -11,3 +13,5 @@ configDB();
 app.listen(port, () => {
   console.log(`Server is listening at ${port}`);
 });
+
+app.use("/api/stock", stocksRouter);
