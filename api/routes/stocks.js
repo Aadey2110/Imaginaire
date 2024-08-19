@@ -3,7 +3,7 @@ const {
   getStocksSymbol,
   getStockDetails,
   getStockHistory,
-} = require("../controller/info");
+} = require("../controller/stocks/info");
 
 const router = express.Router();
 

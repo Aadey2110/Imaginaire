@@ -1,10 +1,13 @@
-const { getNseStocksSymbols } = require("./nse/info/symbols");
-const { getNseStockDetails } = require("./nse/info/details");
-const { getNseStockHistory } = require("./nse/info/history");
+const {
+  getNseStockDetails,
+  getNseStockHistory,
+  getNseStocksSymbols,
+} = require("./nse/index");
 
 async function getStocksSymbol(req, res) {
   try {
-    switch (req.params.stockExchange) {
+    const stockExchange = req.params.stockExchange;
+    switch (stockExchange) {
       case "nse":
         return res.status(200).json({
           symbols: await getNseStocksSymbols(),
@@ -22,7 +25,8 @@ async function getStocksSymbol(req, res) {
 
 async function getStockDetails(req, res) {
   try {
-    switch (req.params.stockExchange) {
+    const stockExchange = req.params.stockExchange;
+    switch (stockExchange) {
       case "nse":
         return res.status(200).json({
           detail: await getNseStockDetails(req.params.symbol),
@@ -40,7 +44,8 @@ async function getStockDetails(req, res) {
 
 async function getStockHistory(req, res) {
   try {
-    switch (req.params.stockExchange) {
+    const stockExchange = req.params.stockExchange;
+    switch (stockExchange) {
       case "nse":
         return res.status(200).json({
           detail: await getNseStockHistory({

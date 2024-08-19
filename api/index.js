@@ -4,6 +4,7 @@ require("dotenv").config();
 const { configDB } = require("./config/db");
 
 const stocksRouter = require("./routes/stocks");
+const userRouter = require("./routes/users");
 
 const app = express();
 const port = process.env.PORT;
@@ -15,3 +16,4 @@ app.listen(port, () => {
 });
 
 app.use("/api/stock", stocksRouter);
+app.use("/api/user", userRouter);
