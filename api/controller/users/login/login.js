@@ -2,7 +2,7 @@ const { User } = require("../../../models/users");
 
 async function login(email, password) {
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     if (!user) {
       throw new Error("User not found");

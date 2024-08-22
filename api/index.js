@@ -7,7 +7,7 @@ const stocksRouter = require("./routes/stocks");
 const userRouter = require("./routes/users");
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 configDB();
 

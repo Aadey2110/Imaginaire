@@ -4,11 +4,13 @@ const {
   getNseStocksSymbols,
 } = require("./nse/index");
 
+const { stockExchangesConstants } = require("../../constants/common");
+
 async function getStocksSymbol(req, res) {
   try {
     const stockExchange = req.params.stockExchange;
     switch (stockExchange) {
-      case "nse":
+      case stockExchangesConstants.nse:
         return res.status(200).json({
           symbols: await getNseStocksSymbols(),
           message: "sent successfully",
@@ -27,7 +29,7 @@ async function getStockDetails(req, res) {
   try {
     const stockExchange = req.params.stockExchange;
     switch (stockExchange) {
-      case "nse":
+      case stockExchangesConstants.nse:
         return res.status(200).json({
           detail: await getNseStockDetails(req.params.symbol),
           message: "sent successfully",
@@ -46,7 +48,7 @@ async function getStockHistory(req, res) {
   try {
     const stockExchange = req.params.stockExchange;
     switch (stockExchange) {
-      case "nse":
+      case stockExchangesConstants.nse:
         return res.status(200).json({
           detail: await getNseStockHistory({
             symbol: req.params.symbol,
