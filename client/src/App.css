@@ -1,13 +1,10 @@
 *{
   margin: 0;
   padding: 0;
-  font-size: x-large;
 }
 
-.App {
-  text-align: center;
+.app {
   color: white;
   background-color: black;
-  height: 100vh;
-  align-content: center;
+  min-height: 100vh;
 }
