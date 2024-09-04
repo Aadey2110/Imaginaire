@@ -1,7 +1,6 @@
 //npm packages
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
 
 // configuring essentials
 const { configDB } = require("./config/db");
@@ -10,10 +9,12 @@ const { configDB } = require("./config/db");
 const stocksRouter = require("./routes/stocks");
 const userRouter = require("./routes/users");
 
+require("dotenv").config();
+configDB();
+
 const app = express();
 const port = process.env.PORT || 5000;
 
-configDB();
 
 app.listen(port, () => {
   console.log(`Server is listening at ${port}`);
