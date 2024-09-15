@@ -1,19 +1,59 @@
 import React from "react";
-import { StockCard } from "./components/stockCard";
+import { StockCardSection } from "./components/StockCardSection/index";
+import { Stock } from "./components/types";
+import Graph from "../../components/graph";
 
 export const Home: React.FC = () => {
-  // Create an array with 13 elements
-  const stockCards: JSX.Element[] = Array.from({ length: 13 }, (_, i) => (
-    <div key={i} className="float-left w-72 mx-3 my-3">
-      <StockCard symbol="SYM1" price={100} change={0.5} changePercent={0.5} />
-    </div>
-  ));
+  const test: Stock[] = [
+    {
+      symbol: "SYM1",
+      price: 100,
+      change: 0.5,
+      changePercent: 0.5,
+    },
+    {
+      symbol: "SYM1",
+      price: 100,
+      change: 0.5,
+      changePercent: 0.5,
+    },
+    {
+      symbol: "SYM1",
+      price: 100,
+      change: 0.5,
+      changePercent: 0.5,
+    },
+    {
+      symbol: "SYM1",
+      price: 100,
+      change: 0.5,
+      changePercent: 0.5,
+    },
+    {
+      symbol: "SYM1",
+      price: 100,
+      change: 0.5,
+      changePercent: 0.5,
+    },
+    {
+      symbol: "SYM1",
+      price: 100,
+      change: 0.5,
+      changePercent: 0.5,
+    },
+    {
+      symbol: "SYM1",
+      price: 100,
+      change: 0.5,
+      changePercent: 0.5,
+    },
+  ];
 
   return (
-    <div className="flex justify-center p-5">
-      <div className="grid grid-cols-4 gap-4 max-w-full">
-        {stockCards}
-      </div>
+    <div className="p-5 bg-black min-h-screen overflow-x-hidden">
+      {/* <IndexSection /> */}
+      <StockCardSection stocksList={test} title="Recently Visited Stocks" />
+      <Graph />
     </div>
   );
 };

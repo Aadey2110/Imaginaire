@@ -17,13 +17,13 @@ export const StockCard: React.FC<StockCardProps> = (sp: StockCardProps) => {
         isPositive
           ? " text-green-800 border-green-900"
           : "text-red-800 border-red-900"
-      } w-full`}
+      } w-full max-w-80`}
     >
-      <div className="flex items-center justify-between w-full">
-        <span className="font-bold mr-4">{sp.symbol}</span>
-        <div className="text-right">
-          <div className="flex items-center">
-            <span className="mr-2">{sp.price.toFixed(2)}</span>
+      <div className="flex items-center justify-between w-full text-xs sm:text-md">
+        <span className="font-bold">{sp.symbol}</span>
+        <div className="text-center">
+          <div className="flex gap-1 items-center text-wrap">
+            <span className="">{sp.price.toFixed(2)}</span>
             <div
               className={`${isPositive ? "text-green-600" : "text-red-600"}`}
             >

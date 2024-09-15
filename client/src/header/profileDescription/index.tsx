@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 import { LoginOption } from './loginOption';
 import { ProfileBrief } from './profileBrief';
 
