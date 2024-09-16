@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface StockCardProps {
   symbol: string;
@@ -8,8 +9,14 @@ interface StockCardProps {
   flexBasis?: string;
 }
 
-export const StockCard: React.FC<StockCardProps> = (sp: StockCardProps) => {
-  const isPositive = sp.change >= 0;
+export const StockCard: React.FC<StockCardProps> = ({
+  symbol,
+  price,
+  change,
+  changePercent,
+  flexBasis,
+}: StockCardProps) => {
+  const isPositive = change >= 0;
 
   return (
     <div
@@ -19,26 +26,26 @@ export const StockCard: React.FC<StockCardProps> = (sp: StockCardProps) => {
           : "text-red-800 border-red-900"
       } w-full max-w-80`}
     >
-      <div className="flex items-center justify-between w-full text-xs sm:text-md">
-        <span className="font-bold">{sp.symbol}</span>
-        <div className="text-center">
-          <div className="flex gap-1 items-center text-wrap">
-            <span className="">{sp.price.toFixed(2)}</span>
-            <div
-              className={`${isPositive ? "text-green-600" : "text-red-600"}`}
-            >
-              {sp.change >= 0
-                ? `+${sp.change.toFixed(2)}`
-                : `${sp.change.toFixed(2)}`}
-              (
-              {sp.changePercent >= 0
-                ? `+${sp.changePercent.toFixed(2)}`
-                : `${sp.changePercent.toFixed(2)}`}
-              %)
+      <Link to={`/StockDisplay/${symbol}`}>
+        <div className="flex items-center justify-between w-full text-xs sm:text-md">
+          <span className="font-bold">{symbol}</span>
+          <div className="text-center">
+            <div className="flex gap-1 items-center text-wrap">
+              <span className="">{price.toFixed(2)}</span>
+              <div
+                className={`${isPositive ? "text-green-600" : "text-red-600"}`}
+              >
+                {change >= 0 ? `+${change.toFixed(2)}` : `${change.toFixed(2)}`}
+                (
+                {changePercent >= 0
+                  ? `+${changePercent.toFixed(2)}`
+                  : `${changePercent.toFixed(2)}`}
+                %)
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
