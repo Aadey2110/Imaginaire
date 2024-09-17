@@ -103,7 +103,7 @@ export function Graph({ data }: GraphProps) {
           axisLine={false}
           tickLine={false}
           ticks={yTicks} // Use the generated uniform ticks for Y-axis
-          tickFormatter={(number) => `${number.toFixed(2)}`}
+          tickFormatter={(number) => `$${number.toFixed(2)}`}
           yAxisId="right"
           orientation="right"
           domain={[lowerBound, upperBound]} // Set the calculated domain
@@ -121,9 +121,9 @@ export function Graph({ data }: GraphProps) {
 function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     return (
-      <div className="tooltip bg-black p-3">
+      <div className="tooltip">
         <h4>{format(parseISO(label!), "eeee, d MMM, yyyy")}</h4>
-        <p>{payload[0].value.toFixed(2)} INR</p>
+        <p>${payload[0].value.toFixed(2)} CAD</p>
       </div>
     );
   }
